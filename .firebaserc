@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "kubide-heroes"
+  },
+  "targets": {
+    "kubide-heroes": {
+      "hosting": {
+        "kubide-heroes": [
+          "kubide-heroes"
+        ]
+      }
+    }
+  }
+}

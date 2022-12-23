@@ -16,7 +16,6 @@
     overflow-y: hidden; /* don't show content that exceeds my height */
 }
 
-
   
 .top-part{
     background-color: rgb(99, 148, 197);
@@ -25,48 +24,6 @@
     margin: 0 !important;
     padding: 0 !important;
     z-index: 9;
-}
-
-#team {
-    padding: 0;
-    margin: 0;
-    margin-top: 10px;
-    border-radius: 4px;
-    text-align: center;
-    
-    width: 100%;
-
-    .team_name{
-        display: inline;
-        border: 2px solid rgb(28, 95, 166);
-        border-radius: 4px 4px 0 0;
-        padding: 0px 10px;
-        font-size: 24px;
-        text-transform: uppercase;
-        font-style: italic;
-        font-weight: bold;
-        color:white;
-        background-color: rgb(28, 95, 166);
-    }
-
-    .upper_line {
-        height: 10px;
-        background-color: rgb(28, 95, 166);
-        border-radius: 4px 4px 0 0;
-    }
-
-    .team_chars {
-        background-color: rgb(21, 75, 133);
-        border-radius: 0 0 4px 4px;
-        
-        
-        padding: 10px 0px 20px 0px;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center; 
-    }
 }
 
 .character {
@@ -133,21 +90,6 @@
     }
 }
 
-#collection {
-    
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center; 
-    flex-wrap: wrap;
-
-    .character {
-        margin: 10px 10px; 
-    }
-}
-
-
-
 
 @media screen and (max-width: 767px){
    
@@ -170,5 +112,3 @@
     }
     
 }
-
-

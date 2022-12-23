@@ -11,8 +11,5 @@ export class HomeComponent {
 
   }
 
-  openHeroDetails(){
-
-  }
 
 }

@@ -1,0 +1,42 @@
+.character {
+    flex-basis: 10px;
+    flex-grow: 1;
+    height: 100%;
+    max-width: 140px;
+    min-width: 140px;
+    min-height: 200px;
+    margin: 10px 10px;  
+    display: flex;
+    position: relative;
+    
+    flex-direction: column;
+    justify-content: flex-end;
+
+    
+
+    .char_image {
+        border: 3px solid rgb(98, 96, 96);
+        background-color: white;
+        border-radius: 4px;
+        min-height: 200px;
+    }
+
+    .char_name {
+        position: absolute;
+        bottom: -15px;
+        left: 0;
+        width: 100%;
+        min-height: 20px;
+        text-align: center;
+
+        font-size: 28px;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: rgb(11, 56, 83);
+        text-shadow: 2px 2px rgb(234, 141, 19);
+    }
+}
+
+.overlay {
+    z-index: 8;
+}

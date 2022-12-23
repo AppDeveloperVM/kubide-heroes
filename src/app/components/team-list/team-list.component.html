@@ -1,0 +1,7 @@
+<div id="team">
+    <div class="team_name">Avengers</div>
+    <div class="upper_line"></div>
+    <div class="team_chars">
+        <app-character-item *ngFor="let _ of [].constructor(6); let i = index" [name]="i + 1" [added]="false"></app-character-item>
+    </div>
+</div>

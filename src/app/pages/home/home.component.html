@@ -6,13 +6,7 @@
     <div class="page h-100" role="main">
 
         <div class="top-part">
-            <div id="team">
-                <div class="team_name">Avengers</div>
-                <div class="upper_line"></div>
-                <div class="team_chars">
-                    <app-character-item *ngFor="let _ of [].constructor(6); let i = index" [name]="i + 1" [added]="false"></app-character-item>
-                </div>
-            </div>
+            <app-team-list></app-team-list>
         </div>
 
         <div id="main-part">
@@ -27,11 +21,7 @@
                 </div> 
             </div>
 
-            <div id="collection">
-                <app-character-item (click)="openHeroDetails()" *ngFor="let _ of [].constructor(7); let i = index" [name]="i + 1"></app-character-item>
-                
-                <div class="pagination"></div>
-            </div>
+            <app-hero-collection></app-hero-collection>
         </div>
         
 

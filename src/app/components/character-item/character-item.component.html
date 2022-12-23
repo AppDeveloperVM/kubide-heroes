@@ -1,0 +1,8 @@
+<div class="character">
+    <div class="top-floating-button">
+        <button *ngIf="added" type="button" class="btn btn-success add-btn"><span class="text">+</span></button>
+        <button *ngIf="!added" type="button" class="btn btn-danger rm-btn"><span class="text">-</span></button>
+    </div>
+    <div class="char_image" (click)="openHeroDetails()"></div>
+    <div class="char_name overlay">Name {{name}}</div>
+</div>

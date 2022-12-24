@@ -1,1 +1,23 @@
-<p>hero-details works!</p>
+<div class="custom-modal">
+    
+    <div class="info">
+        <div class="character">
+            <div class="top-floating-button"></div>
+            <div class="char_image">
+                <img class="img-fluid" [src]="thumbnail">
+            </div>
+            <div class="char_name overlay">{{characterData.name}}</div>
+        </div>
+    </div>
+    
+
+    <div class="options">
+        <button *ngIf="added" type="button" class="btn btn-danger remove" (click)="close()">REMOVE FROM TEAM</button>
+        <button *ngIf="!added" type="button" class="btn btn-danger add" (click)="close()">ADD TO THE TEAM</button>
+
+        <button type="button" class="btn btn-danger close" (click)="close()">CLOSE</button>
+    </div>
+
+        
+   
+</div>

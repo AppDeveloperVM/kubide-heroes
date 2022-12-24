@@ -1,13 +1,17 @@
 <!--<nav class="navbar toolbar" role="banner">
     <span class="navbar-brand" href="#">Marvel Team</span>
 </nav>-->
-<div class="row h-100">
-<div class="container-fluid h-100">
-    <div class="page h-100" role="main">
 
-        <div class="top-part">
+<div class="container h-100">
+<div class="row">
+<div class="col-md-12 p-0">
+    <div class="page " role="main">
+
+        <nav class="top-part  navbar-expand sticky-top">
+            
             <app-team-list></app-team-list>
-        </div>
+            
+        </nav>
 
         <div id="main-part">
             <div id="search">
@@ -21,10 +25,9 @@
                 </div> 
             </div>
 
-            <app-hero-collection></app-hero-collection>
+            <app-hero-collection id="collection"></app-hero-collection>
         </div>
-        
-
     </div>
+</div>
 </div>
 </div>

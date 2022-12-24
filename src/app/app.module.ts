@@ -12,6 +12,8 @@ import { CharacterItemComponent } from './components/character-item/character-it
 import { HeroDetailsComponent } from './components/hero-details/hero-details.component';
 import { HeroCollectionComponent } from './components/hero-collection/hero-collection.component';
 import { IonicModule } from '@ionic/angular';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { IonicModule } from '@ionic/angular';
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
-    IonicModule.forRoot()
+    IonicModule.forRoot(),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

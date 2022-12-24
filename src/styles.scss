@@ -34,3 +34,169 @@
     }
 
 }
+
+.character {
+  //flex-basis: 10px;
+  height: 100%;
+  //margin: 10px 2px;  
+  display: flex;
+  position: relative;
+  flex-direction: column;
+
+  //min-width: 70px;
+  //min-height: 200px;
+
+  .char_image {
+      border: 3px solid rgb(98, 96, 96);
+      //background-color: white;
+      border-radius: 4px;
+      aspect-ratio: 1 / 1.4;
+      //min-height: 200px;
+  }
+
+  .char_name {
+      position: absolute;
+      //bottom: -15px;
+      left: 0;
+      width: 100%;
+      //min-height: 20px;
+      text-align: center;
+      bottom: -10px;
+
+      font-size: 28px;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: rgb(101, 187, 241);
+      text-shadow: 2px 2px rgb(181, 15, 15);
+  }
+}
+
+ion-modal {
+  --background: transparent !important;
+  --backdrop-opacity: var(--ion-backdrop-opacity, 0.4);
+    backdrop-filter: blur(6px);
+    --box-shadow: none;
+}
+
+.top-part {
+  .character {
+    padding: 5px;
+  }
+}
+
+
+#collection {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center; 
+  flex-wrap: wrap;
+
+  .character {
+      
+      //flex: 55%!important;
+      //max-width: 55%!important;
+      padding: 0px 10px;
+      margin-bottom: 20px;
+
+      .char_image {
+        //min-height: 140px;
+      }
+  
+      .char_name {
+        font-size: 18px;
+        
+      }
+  }
+}
+
+
+@media screen and (max-width: 767px){
+
+  .top-part {
+
+    .character {
+      flex: 16.6;
+      min-height: 85px;
+      margin: 0 4px;  
+  
+      .char_image {
+        min-height: 90px;
+      }
+  
+      .char_name {
+        font-size: 12px!important;
+        color:white;
+      }
+      
+    }
+
+  }
+
+  #collection {
+
+    .character {
+      flex: 25%!important;
+      flex-grow: 0;
+      max-width: 25%;
+    }
+
+  }
+    
+
+  
+
+}
+@media screen and (min-width:768px) and (max-width: 991px) {
+
+  .top-part {
+
+    .character {
+      flex: 16.6;
+      margin: 0 4px; 
+      min-height: 142px;
+
+      .char_image {
+      }
+    }
+
+  }
+
+  #collection {
+
+    .character {
+      flex: 25%!important;
+      flex-grow: 0;
+      max-width: 25%;
+    }
+
+  }
+
+  
+}
+@media screen and (min-width: 992px) {
+  
+  .top-part {
+
+    .character {
+      .char_image {
+        min-height: 200px;
+      }
+    }
+
+  }
+
+  #collection {
+
+    .character {
+      flex-grow: 0;
+      .char_image {
+        //min-height: 280px;
+      }
+    }
+
+  }
+
+  
+}

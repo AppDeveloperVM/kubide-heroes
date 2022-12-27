@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="frame">
+    <div class="nav">
+        <div class="signin-active w-100"><a class="btn w-100">Sign in</a></div>
+    </div>
+    <div>
+    <form class="form-signin" [formGroup]="Form">
+        <label for="username">Email</label>
+        <input class="form-styling" type="text" formControlName="email" placeholder=""/>
+        <span class="error ion-padding" *ngIf="errorControl['email'].touched && errorControl['email'].errors?.['required']">
+            Email is required.
+        </span>
+
+        <label for="password">Password</label>
+        <input class="form-styling" type="text" formControlName="password" placeholder=""/>
+        <span class="error ion-padding" *ngIf="errorControl['password'].touched && errorControl['password'].errors?.['minlength']">
+            Password min 6 characters long.
+        </span>
+        <button class="btn-animate" (click)="logIn()">
+            <a class="btn-signin">Sign in</a>
+        </button>
+    </form>
+    </div>
+    </div>
+</div>

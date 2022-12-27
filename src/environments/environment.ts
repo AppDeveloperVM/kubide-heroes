@@ -3,15 +3,6 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  firebase: {
-    projectId: 'kubide-heroes',
-    appId: '1:833258792063:web:2c8b37d6219722cba20b4a',
-    storageBucket: 'kubide-heroes.appspot.com',
-    locationId: 'europe-west',
-    apiKey: 'AIzaSyC4XTjWsGD4FpmiAnzXCeatVmQxazNSg5Y',
-    authDomain: 'kubide-heroes.firebaseapp.com',
-    messagingSenderId: '833258792063',
-  },
   marvelAPI: {
     endpointURL: 'http://gateway.marvel.com/v1/public',
     publicKey: '7bd7fa347868d4f3a81c481b28ed379c',
@@ -21,6 +12,16 @@ export const environment = {
   },
   production: false
 };
+
+export const firebaseConfig = {
+  projectId: 'kubide-heroes',
+  appId: '1:833258792063:web:2c8b37d6219722cba20b4a',
+  storageBucket: 'kubide-heroes.appspot.com',
+  locationId: 'europe-west',
+  apiKey: 'AIzaSyC4XTjWsGD4FpmiAnzXCeatVmQxazNSg5Y',
+  authDomain: 'kubide-heroes.firebaseapp.com',
+  messagingSenderId: '833258792063',
+}
 
 /*
  * For easier debugging in development mode, you can import the following file

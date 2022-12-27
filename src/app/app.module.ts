@@ -13,6 +13,12 @@ import { HeroDetailsComponent } from './components/hero-details/hero-details.com
 import { HeroCollectionComponent } from './components/hero-collection/hero-collection.component';
 import { IonicModule } from '@ionic/angular';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { firebaseConfig } from '../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { LoginComponent } from './pages/login/login.component';
 
 
 @NgModule({
@@ -22,17 +28,20 @@ import { HttpClientModule } from '@angular/common/http';
     TeamListComponent,
     CharacterItemComponent,
     HeroDetailsComponent,
-    HeroCollectionComponent
+    HeroCollectionComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideFirestore(() => getFirestore()),
     IonicModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [{ provide: FIREBASE_OPTIONS, useValue: firebaseConfig }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

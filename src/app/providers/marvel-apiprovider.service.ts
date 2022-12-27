@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, tap } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, switchMap, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Character } from '../models/Character.model';
 import { Comic } from '../models/Comic.model';
@@ -24,10 +24,27 @@ export class MarvelAPIProviderService {
   hash = environment.marvelAPI.hash;
   options = `ts=${this.ts}&apikey=${this.publickey}&hash=${this.hash}`;
 
-  constructor(private httpClient: HttpClient) { }
+  private CharactersResults  = new BehaviorSubject<any[]>([]);
+  CharactersResults$ : Observable<any[]> = this.CharactersResults.asObservable();
+  chars = [];
 
-  getAllCharacters(page = 0): Observable<any> {
-    return this.httpClient.get<Results>(`${this.url}/characters?${this.options}&offset=${page}`);
+  constructor(private httpClient: HttpClient) {
+    
+  }
+
+  getAllCharacters(page = 0, extraParams : string = '') : Observable<any> {
+    return this.httpClient.get<Results>(`${this.url}/characters?${extraParams}${this.options}&offset=${page}`);  
+  }
+
+  getCharacters(page?, extraParams?) : Observable<any[]>{
+    this.getAllCharacters(page, extraParams)
+    .pipe(
+      map( (res) => res.data.results )
+    ).subscribe((res) =>
+      this.CharactersResults.next(res)
+    );
+
+    return this.CharactersResults$;
   }
   
   getCharacterInfo(character: string): Observable<Character[]> {
@@ -38,12 +55,8 @@ export class MarvelAPIProviderService {
     );
   }
 
-  getComicsOfCharacter(character: string): Observable<Comic[]> {
-    return this.httpClient.get(`${this.url}/characters/${character}/comics?${this.options}`)
-    .pipe(
-      tap(users => console.log('Comics list retrieved!')),
-      catchError(this.handleError<Character[]>('Get comics', []))
-    );
+  getComicsOfCharacter(character: string): Observable<any> {
+    return this.httpClient.get<Results>(`${this.url}/characters/${character}/comics?limit=5&${this.options}`);
   }
 
   getImage(thumbnail: ImageThumbnail, variant: ImageVariant = ImageVariant.full) {

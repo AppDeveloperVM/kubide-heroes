@@ -6,15 +6,22 @@
             <div class="char_image">
                 <img class="img-fluid" [src]="thumbnail">
             </div>
-            <div class="char_name overlay">{{characterData.name}}</div>
+            <div class="char_name overlay">{{characterData.name}}</div>   
+        </div>
+    </div>
+    <div class="comics">
+        <div class="comics_list" *ngIf="comics.length > 0">
+            <div class="comic_name" *ngFor="let comic of comics">{{comic.name}}</div>
+        </div>
+        <div class="no_results" *ngIf="comics.length == 0">
+            No se encuentran referencias en comics.
         </div>
     </div>
     
-
     <div class="options">
-        <button *ngIf="added" type="button" class="btn btn-danger remove" (click)="close()">REMOVE FROM TEAM</button>
-        <button *ngIf="!added" type="button" class="btn btn-danger add" (click)="close()">ADD TO THE TEAM</button>
-
+        <button *ngIf="!added" (click)="addMember(characterData)" type="button" class="btn btn-success add-btn"><span class="text">Add to Team</span></button>
+        <button *ngIf="added" (click)="removeMember(characterData)" type="button" class="btn btn-danger rm-btn"><span class="text">Remove From Team</span></button>
+    
         <button type="button" class="btn btn-danger close" (click)="close()">CLOSE</button>
     </div>
 

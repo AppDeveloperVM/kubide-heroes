@@ -26,14 +26,38 @@
 
     .character {
         min-width: 200px;
-        
+        .char_image {
+            //min-height: 200px;
+        }
     }
 
-    .char_image {
-        //min-height: 200px;
+    .comics {
+        color: white;
+        max-width: 100%;
+        margin: 10px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .comics_list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        font-weight: bold;
+        font-size: 18px;
+
+        .comic_name {
+            text-align: center;
+            max-width: 70%;
+            padding: 4px 0;
+            text-shadow: -1px -1px 0 #000000, 0 1px 0 #010101,0 2px 0 #010101, 0 3px 0 #000000, 0 4px 0 #000000 ;
+        }
     }
     
-
     .options {
         display: flex;
         flex-direction: column;

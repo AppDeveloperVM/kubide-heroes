@@ -31,23 +31,6 @@
     //padding-top: 305px;
 }
 
-#search {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
-    height: 50px;
-    width: 100%;
-
-    .search-box {
-        max-width: 220px;
-    }
-    .search-icon {
-        .btn {
-            padding: 8px;
-        }
-    }
-}
 
 .overlay {
     z-index: 8;

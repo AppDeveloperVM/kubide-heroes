@@ -1,2 +1,26 @@
-<app-character-item class="character" *ngFor="let item of Object.values(characters)" [name]="item"></app-character-item>
-<div class="pagination"></div>
+<div id="search">
+    <div class="search-box">
+        <div class="input-group ">
+            <form [formGroup]="form" class="d-flex">
+            <input type="text" formControlName="heroName" (keydown)="onKeyDownEvent($event)" class="form-control" placeholder="Search hero name" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button type="button" (click)="onSearch()" class="btn btn-primary"><i class="bi bi-search"></i></button>
+            </div>
+            </form>
+        </div>       
+    </div> 
+</div>
+
+<app-character-item *ngFor="let hero of hero_collection$ | async" [hero]="hero"></app-character-item>
+
+<ion-infinite-scroll threshold="1%" (ionInfinite)="loadMore($event)" >
+
+    <ion-infinite-scroll-content
+    position="bottom"
+    loadingSpinner="bubbles"
+    loadingText="Loading another page.."
+    ></ion-infinite-scroll-content>
+
+</ion-infinite-scroll>
+
+

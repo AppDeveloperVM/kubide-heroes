@@ -1,10 +1,11 @@
-<div class="">
-    <div class="top-floating-button" *ngIf="false">
-        <button *ngIf="added" type="button" class="btn btn-success add-btn"><span class="text">+</span></button>
-        <button *ngIf="!added" type="button" class="btn btn-danger rm-btn"><span class="text">-</span></button>
+<div class="character" [ngClass]="{ 'floatup': added === true, 'deselected': added === false  }">
+    <div  *ngIf="!hero!=null" class="top-floating-button" >
+        <button  *ngIf="!added && (teamMembersCount$ | async) < 6 " (click)="addTeamMember(hero)" type="button" class="btn btn-success add-btn"><span class="text">+</span></button>
+        <button *ngIf="added" (click)="removeMember(hero)" type="button" class="btn btn-danger rm-btn"><span class="text">-</span></button>
     </div>
-    <div class="char_image" (click)="openHeroDetails(name)">
-        <img [src]="getImage(name)">
+    <div class="char_image" (click)="openHeroDetails(hero)">
+        <div class="overlay_image"><img src="/assets/images/approved-stamp2.png"></div>
+        <img class="hero" *ngIf="hero!=null" [src]="getImage(hero)">
     </div>
-    <div class="char_name overlay">{{name.name}}</div>
+    <div class="char_name overlay">{{ hero?.name }}</div>
 </div>

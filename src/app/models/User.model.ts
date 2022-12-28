@@ -7,6 +7,6 @@ export class User {
         displayName: string,
         emailVerified: boolean,
         photoURL: string,
-        teams : Team
+        team : string
     ){ }
 }

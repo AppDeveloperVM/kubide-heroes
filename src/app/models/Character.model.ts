@@ -6,7 +6,6 @@ export class Character {
         name : string,
         description : string,
         resourceURI : string,
-        urls : Array<URL>,
         thumbnail : string,
         comics : Comic, 
     ){ }

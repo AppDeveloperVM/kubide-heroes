@@ -4,6 +4,7 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/comp
 import { AlertController } from '@ionic/angular';
 import { User } from 'firebase/auth';
 import { BehaviorSubject, filter, find, from, map, Observable, Subject, Subscription, tap } from 'rxjs';
+import { Character } from 'src/app/models/Character.model';
 import { Team } from 'src/app/models/Team.model';
 import { UserService } from '../user/user.service';
 
@@ -13,6 +14,7 @@ import { UserService } from '../user/user.service';
 export class TeamService {
   public userData : any;
   team: Team;
+  teamIdRef : string = null;
 
   private members = new BehaviorSubject<any[]>([]);
   members$ = this.members.asObservable(); 
@@ -66,6 +68,10 @@ export class TeamService {
       map((members) => this.members_count = members.length + 1)
     ).subscribe();
 
+    this.members$.subscribe((res)=> {
+      console.log(res);
+      this.team = res;
+    })
 
     this.getTeam();
   }
@@ -73,6 +79,8 @@ export class TeamService {
   public getTeam(): void {
     this.teamsObsv = this.teamsCollection.snapshotChanges().pipe(
       map( actions => actions.map(el => {
+        console.log(el);
+        
         const data = el.payload.doc.data() as Team;
         const elId = el.payload.doc.id;
         return { elId, ...data}
@@ -102,10 +110,16 @@ export class TeamService {
 
 
   addHero(member: any) : void {
+    this.members.next([...this.members.value, member]);
+   
     if(this.checkHeroInTeam(member)){
-      //this.onSaveTeam
-
-      this.members.next([...this.members.value, member])
+      const save = this.onSaveTeam(this.team, this.userData.uid ).then((res) => {
+        console.log(res);
+      }).catch((err)=> {
+        console.log(err);
+        
+      })
+    
     }
   }
 
@@ -118,9 +132,24 @@ export class TeamService {
   onSaveTeam(team: Team, userId: string): Promise<void> {
     return new Promise( async (resolve, reject) => {
         try {
+          console.log(team); 
+          
             const id = userId || this.afs.createId();
-            const data = {id, ... team};
-            const result = await this.usersCollection.doc(id).collection('team').doc().set(data);
+            const idTeam = this.teamIdRef || this.afs.createId();
+            const heroData = team[0];
+            const data =  
+            { 
+            id: heroData.id,
+            name : heroData.name,
+            description: heroData.description,
+            resourceURI: heroData.resourceURI,
+            thumbnail: heroData.thumbnail,
+            comics: heroData.comics
+            };
+            const idref = this.usersCollection.doc(id).collection('team').doc(idTeam);
+            this.teamIdRef = idref.ref.id;
+            
+            const result = await idref.collection('members').doc().set(data);
             resolve(result);
         } catch (err) {
             reject(err.message)
@@ -128,12 +157,8 @@ export class TeamService {
     })
   }
 
-  updateTeamName(teamName: string, teamId?: string){
-    //check for string format
-    
-    //
-
-    this.teamName.next(teamName);
+  updateTeamData(teamData: string, teamId?: string){
+    this.teamName.next(teamData);
   }
 
 }

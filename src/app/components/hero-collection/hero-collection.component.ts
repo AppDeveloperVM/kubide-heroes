@@ -47,7 +47,7 @@ export class HeroCollectionComponent {
 
       loading.dismiss();
       this.characters.push(...res);
-      console.log(res);
+      //console.log(res);
     })
      
   } 
